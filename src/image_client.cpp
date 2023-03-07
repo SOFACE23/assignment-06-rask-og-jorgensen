@@ -11,14 +11,24 @@
 #include <iostream>
 #include <boost/array.hpp>
 #include <boost/asio.hpp>
+#include <fstream>
 
 using boost::asio::ip::tcp;
 
-constexpr size_t image_size = 100*100;
+constexpr size_t image_size = 17618; /*Found size in bytes*/
 
 void save_image(char* data, size_t len)
 {
-  // TODO
+  std::ofstream file;
+  file.open("copycat.jpg");
+
+  /*loop that copies all data from data to copycat.jpg*/
+  for(int i=0; i<len; i++) 
+  {
+    file << data[i];
+  }
+
+  file.close();
 }
 
 int main(int argc, char* argv[])
